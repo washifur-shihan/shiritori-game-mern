@@ -1,1 +1,22 @@
-import React,{useState,useEffect} from 'react'; export default function Timer({seconds,onTimeout}){const [time,setTime]=useState(seconds); useEffect(()=>{const id=setInterval(()=>{setTime(t=>{if(t<=1){clearInterval(id); onTimeout(); return 0;}return t-1;});},1000); return ()=>clearInterval(id);},[onTimeout,seconds]); return <div><b>Time left: {time}s</b></div>; }
+import React, { useState, useEffect } from "react";
+export default function Timer({ seconds, onTimeout }) {
+  const [time, setTime] = useState(seconds);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime((t) => {
+        if (t <= 1) {
+          clearInterval(id);
+          onTimeout();
+          return 0;
+        }
+        return t - 1;
+      });
+    }, 1000);
+    return () => clearInterval(id);
+  }, [onTimeout, seconds]);
+  return (
+    <div>
+      <b>Time left: {time}s</b>
+    </div>
+  );
+}
