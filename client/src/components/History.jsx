@@ -1,0 +1,1 @@
+import React from 'react'; export default function History({words}){return(<div><h4>Word History</h4><ol>{words.map((w,i)=><li key={i}>{w}</li>)}</ol></div>);};
